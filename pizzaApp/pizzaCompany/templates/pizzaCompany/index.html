@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{%  load static  %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"   />
+</head>
+<body>
+<div class="header">
+    <div>
+        logo
+    </div>
+    <div>
+        <button>menu</button>
+        <button>home</button>
+        <button>cart</button>
+    </div>
+    <div>
+        <button>sign in</button>
+    </div>
+
+</div>
+<div class="main-part">
+    <div class="main-part__top">
+        <button class="button button_oval"> back </button>
+    </div>
+    <div class="menu-page-title">
+        Menu
+    </div>
+    <div class="menu-table">
+        {% for pizza in pizzas %}
+        <div class="menu-table-elem">
+            <div class="menu-elem__description elem-z">
+                <img class="img menu-elem__img elem-z1" src="{{pizza.image.url}}" alt="пицца">
+                <div class="menu-elem__ingredients elem-z2">
+                    {{pizza.description}}
+                </div>
+            </div>
+            <div class="menu-elem__name">
+                {{pizza.name}}
+            </div>
+            <div class="menu-elem__footer">
+                <span class="menu-elem__price">
+                    {{pizza.price}}
+                </span>
+                <span class="menu-elem__button elem-z">
+                    <button class="button button_oval elem-z1">Заказать</button>
+                    <div class="amount-order hidden elem-z2">
+                        <button class="button button_circle"> - </button>
+                        <span class="amount-order__elem"> 1 </span>
+                        <button class="button button_circle"> + </button>
+                    </div>
+                </span>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+<div class="footer">
+
+</div>
+</body>
+</html>
