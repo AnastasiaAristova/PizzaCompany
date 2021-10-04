@@ -1,0 +1,60 @@
+////////домашняя страница///////////////
+.home-page-title{
+  @extend %title;
+  width: 1000px;
+}
+.home-table{
+  @extend %table;
+}
+.home-table__elem{
+  display: grid;
+  grid-template-rows: repeat(auto-fill, auto);
+  padding: 15px 5px 15px 5px;
+}
+.home-elem__date{
+  @extend %text;
+  padding: 0px 0px 5px 0px;
+}
+.home-elem__address{
+  @extend %text;
+  padding: 0px 0px 20px 0px;
+  font-size: 17px;
+  opacity: 0.6;
+}
+.home-elem__order{
+  @extend %table__order;
+  @extend %border;
+  grid-template-columns: 150px repeat(3, auto);
+}
+.home-elem__order-price{
+  @extend %text;
+  @extend %centering;
+}
+
+
+.home-elem__description{
+  @extend %elem__description;
+}
+.home-elem__order-name{
+  @extend %text;
+  @extend %centering;
+}
+
+.home-elem__total-order{
+  @extend %total-order;
+}
+.home-elem__total-order-title{
+
+}
+.home-elem__total-order-price{
+  @extend %total-order-price;
+}
+
+.home-elem__check{
+  @extend %text;
+  padding: 0px 0px 20px 0px;
+  font-size: 17px;
+  text-transform: none;
+  opacity: 0.6;
+}
+//////////////////////////////

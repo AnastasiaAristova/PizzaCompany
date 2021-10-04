@@ -1,0 +1,39 @@
+$main-yellow: #ffd342;
+//header
+
+.header{
+  width: auto;
+  height: 70px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  background: $main-yellow;
+}
+
+
+.header__icon {
+  display: grid;
+  width: auto;
+  object-fit: scale-down;
+  align-items: center;
+}
+.icon{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.header__menu{
+  width: auto;
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.header__menu-items{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  align-items: center;
+  font-size: 22px;
+}

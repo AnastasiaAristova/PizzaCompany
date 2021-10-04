@@ -1,0 +1,177 @@
+//$main-yellow: #ffd342;
+
+///cart header
+
+%section-header-text{
+  color: black;
+  font-size: 40px;
+}
+%section-header-display{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  margin: 20px;
+  padding-top: 30px;
+}
+
+%section-right{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+
+.cart-table{
+  @extend %table;
+}
+.cart-page-title{
+  @extend %title;
+  width: 1000px;
+}
+.cart-elem__order{
+  @extend %table__order;
+  @extend %border;
+  grid-template-columns: 150px repeat(4, auto);
+}
+.cart-elem__description{
+  @extend %elem__description;
+}
+.cart-elem__order-name{
+  @extend %centering;
+  @extend %text;
+}
+
+.cart-elem__order-size{
+  @extend %centering;
+  @extend %text;
+  ////Свойство не работает почему-то, если переместиьь в style.scss, то работает?? мб с вебпаком норм будет
+  text-transform: none;
+}
+
+
+.cart-elem__total-order{
+  @extend %total-order;
+}
+.cart-elem__total-order-title{
+
+}
+.cart-elem__total-order-price{
+  @extend %total-order-price;
+}
+.cart-elem__total-order-currency{
+  width: 20px;
+}
+.section-header-name{
+  @extend %section-header-text
+}
+.cart__header{
+  @extend %section-header-display
+}
+
+.cart__total{
+  @extend %section-header-display
+}
+
+.cart__header__component{
+  @extend %section-right
+}
+
+.select-currency {
+  position: relative;
+  width: 150px;
+
+}
+
+.select-currency select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: $main-yellow;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: $main-yellow;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+///////////////////////
+.page-cart{
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr ;
+}
+
+.cart{
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+
+.total-sum{
+  @extend %section-right;
+  font-size: 30px;
+}
+
+
+/*.cart-table__order:hover{
+  //box-shadow: 2px 2px 2px #d7b132 ;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}*/
+
+.cart__item__component{
+  @extend %centering;
+  flex-direction: column;
+}
+
+.currency-sign{
+  margin-left: 10px;
+  padding:0 3px 0 3px;
+  border: 2px solid $main-yellow;
+  border-radius: 25px;
+  cursor: pointer;
+}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="main-part">
+    <div class="home-page-title">
+        My order
+    </div>
+    <div class="home-table">
+        <div class="home-table__elem">
+
+            <div class="home-elem__date">
+                15.09.2021 19:42
+            </div>
+
+            <div class="home-elem__address">
+                г. Санкт-Петербург, ул. Маршала Новикова, 2к1
+            </div>
+
+            <div class="home-elem__order">
+                <div class="home-elem__description">
+                    <img class="img menu-elem__img" src="/media/img/margarita.png" alt="пицца">
+                </div>
+
+                <div class="home-elem__order-name">
+                    Margarita
+                </div>
+                <div class="amount-order">
+                    <span class="amount-order__elem"> 1 шт</span>
+                </div>
+                <div class="home-elem__order-price">
+                    100
+                </div>
+            </div>
+
+            <div class="home-elem__total-order">
+                <div class="home-elem__total-order-title"></div>
+                <div class="home-elem__total-order-price">100</div>
+                <div class="home-elem__total-order-currency">$</div>
+            </div>
+
+            <div class="home-elem__check">
+                check
+            </div>
+
+            <div class="home-elem__bottom">
+                <button class="button button_oval"> repeat the order </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

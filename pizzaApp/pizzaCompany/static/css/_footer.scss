@@ -1,0 +1,20 @@
+$main-yellow: #ffd342;
+//footer
+
+.footer{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  padding: 10px;
+}
+
+.footer__link{
+  display:grid;
+}
+.page-bottom{
+  background-color: $main-yellow;
+  padding: 25px;
+}
+
+.bottom{
+  margin-top: auto;
+}

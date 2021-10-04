@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="main-part">
+    <div class="cart-page-title">CART</div>
+    <div class="select-currency">
+        <select>
+            <option value="1">Euro</option>
+            <option value="2">Dollar</option>
+        </select>
+    </div>
+
+    <div class="cart-table">
+        <div class="cart-elem__order">
+            <div class="cart-elem__description">
+                <img class="img" src="/media/img/margarita.png">
+            </div>
+            <div class="cart__item__component ">
+                <div class="cart-elem__order-name">Margarita</div>
+                <div class="cart-elem__order-size">small</div>
+            </div>
+            <div class="amount-order">
+                    <button class="button button_circle"> - </button>
+                    <span class="amount-order__elem"> 1 </span>
+                    <button class="button button_circle"> + </button>
+            </div>
+            <div class="home-elem__order-price">
+                    100
+            </div>
+            <div class="cart__item__component item-clear">
+                <button class="button button_oval">bin</button>
+            </div>
+        </div>
+
+        <div class="cart-elem__total-order">
+            <div class="cart-elem__total-order-title">Total</div>
+            <div class="cart-elem__total-order-price">200000000000</div>
+            <div class="cart-elem__total-order-currency">$</div>
+
+        </div>
+       <!-- <div class="get-delivery-button">
+            <button >Process Delivery</button>
+        </div>
+        <div class="delivery-info">
+            <input class="delivery-info__address" type="text">
+            <input class="delivery-info__name" type="text">
+            <input class="delivery-info__entrance" type="text">
+            <input class="delivery-info__floor" type="text">
+            <input class="delivery-info__apartment" type="text">
+            <input class="delivery-info__phone" type="tel">
+            <input class="delivery-info__email" type="email">
+
+        </div>-->
+    </div>
+
+</div>
+
+
+<div class="bottom">
+{% endblock %}
