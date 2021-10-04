@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Pizza
 
-
+# TODO: Сделать чтобы страница были открывались в корне url /, а не через pizzaCompany/
 def index(request):
     return render(request, "pizzaCompany/index.html")
 
