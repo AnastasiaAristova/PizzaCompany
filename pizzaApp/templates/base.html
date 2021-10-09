@@ -9,14 +9,14 @@
 <body>
 <div class="header">
         <div class="header__icon">
-            <img class="icon" src="/media/mainPageImg/Vecto.png">
+            <img class="icon" src="/media/main_page_img/Vecto.png">
         </div>
         <div class="header__menu">
             <div class="header__menu-items">
                 <a href="{% url 'menu' %}">MENU</a>
                 <a href="{% url 'home' %}">HOME</a>
                 <a href="{% url 'cart' %}">CART</a>
-                <a href="">LOGIN</a>
+                <a href="{% url 'registration' %}">LOGIN</a>
             </div>
         </div>
 </div>
@@ -28,15 +28,15 @@
 {% block page_content %} CONTENT {% endblock %}
 <div class="footer">
     <div class="footer__logo">
-        <img src="/media/mainPageImg/foot-logo.png">
+        <img src="/media/main_page_img/foot-logo.png">
     </div>
     <div class="footer__link">
         <div class="footer__link__text">Follow us on social media</div>
         <div class="footer__link__icons">
-            <img src="/media/mainPageImg/Twitter.png">
-            <img src="/media/mainPageImg/Instagram.png">
-            <img src="/media/mainPageImg/Facebook.png">
-            <img src="/media/mainPageImg/WhatsApp.png">
+            <img src="/media/main_page_img/Twitter.png">
+            <img src="/media/main_page_img/Instagram.png">
+            <img src="/media/main_page_img/Facebook.png">
+            <img src="/media/main_page_img/WhatsApp.png">
         </div>
     </div>
 </div>

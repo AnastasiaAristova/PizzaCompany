@@ -10,7 +10,7 @@ module.exports = {
     mode: 'development',
     output: {
         //path: path.resolve(__dirname, 'dist'),
-        path: path.resolve(__dirname, '../pizzaApp/pizzaCompany/static/JS/'),
+        path: path.resolve(__dirname, '../pizza_app/pizza_company/static/JS/'),
         filename: 'bundle.js',
         //clean: true,
     },
