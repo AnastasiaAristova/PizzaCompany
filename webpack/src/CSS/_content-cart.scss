@@ -27,33 +27,38 @@
 }
 .cart-page-title{
   @extend %title;
-  width: 1000px;
 }
 .cart-elem__order{
   @extend %table__order;
   @extend %border;
-  grid-template-columns: 150px repeat(4, auto);
+
 }
 .cart-elem__description{
   @extend %elem__description;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 .cart-elem__order-name{
-  @extend %centering;
+  //@extend %centering;
   @extend %text;
 }
 
 .cart-elem__order-size{
-  @extend %centering;
+  //@extend %centering;
   @extend %text;
   ////Свойство не работает почему-то, если переместиьь в style.scss, то работает?? мб с вебпаком норм будет
   text-transform: none;
 }
+.cart-elem__price{
+  @extend %text;
+}
 
-
-.cart-elem__total-order{
+.cart__total-order{
   @extend %total-order;
 }
-.cart-elem__total-order-title{
+.cart__total-order-title{
 
 }
 .cart-elem__total-order-price{
@@ -140,7 +145,13 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.cart-elem__img{
+  height: 100%;
 
+  img{
+    border-radius: 10px;
+  }
+}
 
 
 ///////////////////////
@@ -177,4 +188,21 @@
   border: 2px solid $main-yellow;
   border-radius: 25px;
   cursor: pointer;
+}
+.cart__order-button{
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-end;
+  button{
+    padding: 10px 20px;
+  }
+}
+.order-info__form{
+  @extend %table;
+  @extend %border;
+  width: 50%;
+}
+.order-info__container{
+  @extend %container;
+
 }

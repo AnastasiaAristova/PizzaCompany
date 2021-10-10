@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/pizzaApp" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/virenv" />
     </content>
+    <content url="file://$MODULE_DIR$/pizzaApp/pizza_company/static/JS" />
     <orderEntry type="jdk" jdkName="Python 3.9 (SuperPizza)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

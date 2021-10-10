@@ -1,0 +1,31 @@
+.page-title{
+  @extend %title;
+}
+.form{
+  @extend %table;
+  @extend %border;
+  width: 50%;
+}
+
+.form-container{
+@extend %container;
+  position: relative;
+}
+.form-elem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @extend %text;
+  label{
+    font-size: 20px;
+    display: flex;
+    margin-right: 20px;
+    width: 20%;
+  }
+  width: 80%;
+  margin: 15px 0;
+}
+.class-for-input{
+  width: 80%;
+  height: 25px;
+}

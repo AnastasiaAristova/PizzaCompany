@@ -2,17 +2,19 @@ $main-yellow: #ffd342;
 //footer
 //TODO: сделать вложенность классов
 .footer{
+  margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr ;
-  padding: 10px;
 }
 
 .footer__link{
   display:grid;
 }
 .page-bottom{
+
+  height: 25px;
   background-color: $main-yellow;
-  padding: 25px;
+  //padding: 25px;
 }
 
 .bottom{
