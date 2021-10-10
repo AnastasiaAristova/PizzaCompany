@@ -1,15 +1,14 @@
 ////////домашняя страница///////////////
 .home-page-title{
   @extend %title;
-  width: 1000px;
 }
 .home-table{
   @extend %table;
+  margin-bottom: 20px;
 }
 .home-table__elem{
-  display: grid;
-  grid-template-rows: repeat(auto-fill, auto);
-  padding: 15px 5px 15px 5px;
+  //@extend %table__order;
+  @extend %border;
 }
 .home-elem__date{
   @extend %text;
@@ -23,15 +22,39 @@
 }
 .home-elem__order{
   @extend %table__order;
-  @extend %border;
-  grid-template-columns: 150px repeat(3, auto);
+  position: relative;
+  //@extend %border;
 }
+
+  li:after{
+    position: absolute;
+    content: "";
+    height: 1px;
+    bottom: 0;
+    width: 80%;
+    background-color: #ffd342;
+  }
+  li:last-child:after{
+    display: none;
+  }
+
+
 .home-elem__order-price{
   @extend %text;
   @extend %centering;
 }
 
+.elem-container{
+  padding: 10px 20px;
+}
 
+.home-elem__img{
+  height: 100%;
+
+  img{
+    border-radius: 10px;
+  }
+}
 .home-elem__description{
   @extend %elem__description;
 }
@@ -42,6 +65,7 @@
 
 .home-elem__total-order{
   @extend %total-order;
+  margin-bottom: 20px;
 }
 .home-elem__total-order-title{
 
@@ -50,6 +74,8 @@
   @extend %total-order-price;
 }
 
+
+
 .home-elem__check{
   @extend %text;
   padding: 0px 0px 20px 0px;
@@ -57,4 +83,10 @@
   text-transform: none;
   opacity: 0.6;
 }
+
+.home-elem__bottom{
+  display: flex;
+  justify-content: flex-end;
+}
+
 //////////////////////////////

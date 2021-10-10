@@ -2,11 +2,12 @@
 {% block page_content %}
 <div class="main-part">
     <div class="home-page-title">
-        My order
+        My orders
     </div>
     <div class="home-table">
         <div class="home-table__elem">
 <!--TODO: откуда взялся класс home-elem__date? По вложенности выше не было класса home-elem. -->
+            <div class="elem-container">
             <div class="home-elem__date">
                 15.09.2021 19:42
             </div>
@@ -14,9 +15,10 @@
             <div class="home-elem__address">
                 г. Санкт-Петербург, ул. Маршала Новикова, 2к1
             </div>
-
-            <div class="home-elem__order">
-                <div class="home-elem__description">
+                <hr>
+                <ul class="home-elements">
+                    <li class="home-elem__order">
+                <div class="home-elem__img">
                     <img class="img menu-elem__img" src="/media/img/margarita.png" alt="пицца">
                 </div>
 
@@ -26,27 +28,38 @@
                 <div class="amount-order">
                     <span class="amount-order__elem"> 1 шт</span>
                 </div>
-                <div class="home-elem__order-price">
+                <div class="cart-elem__price">
                     100
                 </div>
-            </div>
+            </li>
+                    <li class="home-elem__order">
+                    <div class="home-elem__img">
+                        <img class="img menu-elem__img" src="/media/img/margarita.png" alt="пицца">
+                    </div>
 
+                    <div class="home-elem__order-name">
+                        Margarita
+                    </div>
+                    <div class="amount-order">
+                        <span class="amount-order__elem"> 1 шт</span>
+                    </div>
+                    <div class="cart-elem__price">
+                        100
+                    </div>
+                </li>
+                </ul>
+                <hr>
             <div class="home-elem__total-order">
                 <div class="home-elem__total-order-title">Total</div>
-                <div class="home-elem__total-order-price">100</div>
-                <div class="home-elem__total-order-currency">$</div>
-            </div>
-
-            <div class="home-elem__check">
-                check
+                <div class="home-elem__total-order-price">100 <span class="currency">$</span></div>
             </div>
 
             <div class="home-elem__bottom">
-                <button class="button button_oval"> repeat the order </button>
+                <button class="button button_oval"> order again </button>
             </div>
 
         </div>
-
+        </div>
     </div>
 
 </div>

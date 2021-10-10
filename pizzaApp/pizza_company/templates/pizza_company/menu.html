@@ -7,7 +7,7 @@
     <div class="menu-table">
         {% for pizza in pizzas %}
 <!--        TODO: menu-table-elem - название не по БЭМ -->
-        <div class="menu-table-elem">
+        <div class="menu-table__elem" id="{{pizza.pk}}">
             <div class="menu-elem__description elem-z">
                 <img class="img menu-elem__img elem-z1" src="{{pizza.image.url}}" alt="пицца">
                 <div class="menu-elem__ingredients elem-z2">
@@ -15,21 +15,22 @@
                 </div>
             </div>
             <div class="menu-elem__name">
-                {{pizza.name}}
+                <h3 class="sub-title">{{pizza.name}}</h3>
             </div>
             <div class="menu-elem__footer">
                 <span class="menu-elem__price">
                     {{pizza.price}}
                 </span>
-                <span class="menu-elem__button elem-z">
-                    <button class="button button_oval elem-z1">Заказать</button>
-                    <div class="amount-order hidden elem-z2">
-                        <button class="button button_circle"> - </button>
-                        <span class="amount-order__elem"> 1 </span>
-                        <button class="button button_circle"> + </button>
+                <div class="menu-elem__button elem-z">
+                    <button class="button menu-order-btn button_oval button-menu elem-z2">Заказать</button>
+                    <div class="menu-elem__multiple-choice amount-choice elem-z1">
+                        <button class="button button-menu " type="button" onclick="this.nextElementSibling.stepDown()">–</button>
+                        <input  type="number" min="0" max="20" value="1" readonly class="number">
+                        <button class="button button-menu " type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                     </div>
-                </span>
+                </div>
             </div>
+            <hr>
 
         </div>
         {% endfor %}

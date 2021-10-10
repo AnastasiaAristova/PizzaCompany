@@ -11,16 +11,20 @@
   margin-left: auto;
   margin-right: auto;
 }
-.menu-table-elem{
+.menu-table__elem{
   height: $height-elem;
   width: $width-elem;
   padding: 10px 20px 10px 20px;
-  display: grid;
-  grid-template-rows: $height-elem*2/3 $height-elem/6 $height-elem/6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //align-items: center;
 }
 .menu-elem__description{
   overflow:hidden;
   border-radius: 10px;
+  width: 100%;
+  height: 100%;
 }
 .menu-elem__ingredients{
   padding: 10px 20px 10px 20px;
@@ -29,7 +33,12 @@
   visibility: hidden;
   background: rgba(255, 255, 255, 0.5);
 }
-.menu-table-elem:hover .menu-elem__ingredients{
+.menu-order-btn{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+.menu-table__elem:hover .menu-elem__ingredients{
   visibility: visible;
 }
 .menu-elem__name{
@@ -37,9 +46,10 @@
   @extend %text;
 }
 .menu-elem__footer{
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  border-bottom: 2px solid $grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  //border-bottom: 2px solid $grey;
 }
 
 
@@ -50,7 +60,54 @@
 }
 .menu-elem__button{
   @extend %centering;
+  text-align: center;
+  width: 150px;
+  height: 50px;
+  padding: 0;
 }
-
-
+.amount-choice{
+  //outline: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  //margin-top: 15px;
+  //margin-bottom: 10px;
+  height: 50px;
+  width: 150px;
+  background-color: white;
+  button{
+    cursor:pointer;
+    text-decoration: none;
+    border: none;
+    color: black;
+    background-color: #ffd342;
+    //font-family: base.$font-roboto;
+    font-weight: normal;
+    font-size: 32px;
+    padding: 6px 14px;
+    text-align: center;
+    justify-content: center;
+  }
+  button:hover{
+    color: white;
+  }
+  input[type="number"]{
+    all: unset;
+    //font-family: base.$font-roboto;
+    font-weight: normal;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 50px;
+background-color: white;
+    padding-left: 10px;
+  }
+}
+/*.amount-choice.hidden{
+  display: none;
+}
+.menu-order-btn.hidden{
+  display: none;
+}*/
 ////////////////////////////////

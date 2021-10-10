@@ -1,9 +1,28 @@
 {% extends "base.html" %}
 {% block page_content %}
-<h1>Регистрация пользователя</h1>
-<form method="post" action="{% url 'registration' %}">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit"> log in </button>
-</form>
+<h1 class="page-title">Sign Up</h1>
+
+    <div class="form">
+
+            <form class="form-container" method="post" action="{% url 'registration' %}">
+                {% csrf_token %}
+           <!-- {{form}}-->
+                <div class="form-elem">
+                    <label for="{{form.name.id_for_label}}">Name:</label>
+                    {{form.name}}
+                </div>
+                <div class="form-elem">
+                    <label for="{{form.last_name.id_for_label}}">Last name:</label>
+                    {{form.last_name}}
+                </div>
+                <div class="form-elem">
+                    <label for="{{form.phone_number.id_for_label}}">Phone:</label>
+                    {{form.phone_number}}
+                </div>
+                <button class="button" type="submit"> sign up </button>
+            </form>
+
+    </div>
+
+
 {% endblock %}
