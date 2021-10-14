@@ -1,7 +1,6 @@
 {
   "name": "webpack",
   "version": "1.0.0",
-  "description": "",
   "main": "webpack.config.js",
   "dependencies": {
     "css-loader": "^6.3.0",
@@ -26,5 +25,6 @@
     "start": "webpack --watch"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }

@@ -4,9 +4,9 @@
 
     <div class="form">
 
-            <form class="form-container" method="post" action="{% url 'registration' %}">
+            <form class="form-container" method="POST" action="{% url 'registration' %}">
                 {% csrf_token %}
-           <!-- {{form}}-->
+                {{ form.password.errors }}
                 <div class="form-elem">
                     <label for="{{form.name.id_for_label}}">Name:</label>
                     {{form.name}}
@@ -18,6 +18,14 @@
                 <div class="form-elem">
                     <label for="{{form.phone_number.id_for_label}}">Phone:</label>
                     {{form.phone_number}}
+                </div>
+                <div class="form-elem">
+                    <label for="{{form.password.id_for_label}}">Password:</label>
+                    {{form.password}}
+                </div>
+                <div class="form-elem">
+                    <label for="{{form.repeat_password.id_for_label}}">Repeat password:</label>
+                    {{form.repeat_password}}
                 </div>
                 <button class="button" type="submit"> sign up </button>
             </form>
