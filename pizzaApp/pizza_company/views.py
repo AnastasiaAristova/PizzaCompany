@@ -1,11 +1,10 @@
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from rest_framework.response import Response
-from rest_framework.renderers import JSONRenderer
+
 from .models import *
 from .forms import AddUser
-from .serializers import *
+
 
 
 def index(request):
