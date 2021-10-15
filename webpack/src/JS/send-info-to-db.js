@@ -1,4 +1,4 @@
-$('.menu-order-btn').click( saveChoice );
+//$('.menu-order-btn').click( saveChoice );
 function saveChoice(e) {
     //const amount = $(this).closest('.amount-choice').children[1].value;
     const amount = e.target.nextElementSibling.children[1].value;
