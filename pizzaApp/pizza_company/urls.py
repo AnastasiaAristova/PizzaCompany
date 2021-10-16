@@ -7,5 +7,6 @@ urlpatterns = [
     path('cart/', cartPage, name='cart'),
     path('home/', homePage, name='home'),
     path('registration/', registrationPage, name='registration'),
+    path('enter/', enterRequest, name='enter'),
     path('menu/addpizzatocart/', addPizzaToCart, name='add-to-cart'),
 ]

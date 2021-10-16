@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 from .models import *
-from .forms import AddUser
+from .forms import *
 
 
 
@@ -23,6 +23,12 @@ def cartPage(request):
 def homePage(request):
     return render(request, "pizza_company/home.html")
 
+def enterRequest(request):
+    if request.method == 'POST':
+        form = UserData(request.POST)
+        if form.is_valid():
+            return redirect('main')
+
 
 def registrationPage(request):
     if request.method == 'POST':
@@ -30,29 +36,17 @@ def registrationPage(request):
         if form.is_valid():
             user = form.save()
             return redirect('main')
+        #else:
+        #   return render(request, "pizza_company/registration.html", {"form": form})
     else:
         form = AddUser()
-    return render(request, "pizza_company/registration.html", {"form": form})
+        form1 = UserData()
+    return render(request, "pizza_company/registration.html", {"form": form, "form1": form1})
 
 
 def addPizzaToCart(request):
     response_data = {}
     print(request.POST)
-   # try:
-    #    order = PizzaUsers.objects.get(done=False)
-
-  #  except ObjectDoesNotExist:
-    #    new_order = PizzaUsers.objects.create()
-    #    order_inf = OrderInformation.objects.create(
-    #        order=new_order.id,
-      #      pizza=request.POST.get('id'),
-      #      quantity=request.POST.get('quantity')
-       # )
-        #w = AddPizzaSerializer(request.POST)
-        # print(w.q1)
-        # print(w.q2)
-        # r = w.data.get('q1') + w.data.get('q2')
-        #print(w.data.get('q1'))
     return JsonResponse(response_data)
 
 

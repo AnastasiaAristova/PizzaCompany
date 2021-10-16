@@ -2,11 +2,17 @@
 {% block page_content %}
 <h1 class="page-title">Sign Up</h1>
 
+    <div class="form-title">
+        <div class="form-title__log-in">
+            Log in
+        </div>
+        <div class="form-title__sign-up">
+            Sign up
+        </div>
+    </div>
     <div class="form">
-
             <form class="form-container" method="POST" action="{% url 'registration' %}">
                 {% csrf_token %}
-                {{ form.password.errors }}
                 <div class="form-elem">
                     <label for="{{form.name.id_for_label}}">Name:</label>
                     {{form.name}}
@@ -19,6 +25,7 @@
                     <label for="{{form.phone_number.id_for_label}}">Phone:</label>
                     {{form.phone_number}}
                 </div>
+                {{ form.non_field_errors }}
                 <div class="form-elem">
                     <label for="{{form.password.id_for_label}}">Password:</label>
                     {{form.password}}
@@ -29,7 +36,25 @@
                 </div>
                 <button class="button" type="submit"> sign up </button>
             </form>
-
+    </div>
+<div class="form">
+            <form class="form-container" method="POST" action="{% url 'enter' %}">
+                {% csrf_token %}
+                <div class="form-elem">
+                    <label for="{{form1.name.id_for_label}}">Name:</label>
+                    {{form1.name}}
+                </div>
+                <div class="form-elem">
+                    <label for="{{form1.phone_number.id_for_label}}">Phone:</label>
+                    {{form1.phone_number}}
+                </div>
+                {{ form1.non_field_errors }}
+                <div class="form-elem">
+                    <label for="{{form1.password.id_for_label}}">Password:</label>
+                    {{form1.password}}
+                </div>
+                <button class="button" type="submit"> sign up </button>
+            </form>
     </div>
 
 
