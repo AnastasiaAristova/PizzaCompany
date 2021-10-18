@@ -48,10 +48,14 @@
   padding: 10px 20px;
 }
 
+
 .home-elem__img{
   height: 100%;
-
+  max-width: 120px;
+  margin-left: 20px;
   img{
+    width: 100%;
+    object-fit: cover;
     border-radius: 10px;
   }
 }
@@ -67,9 +71,7 @@
   @extend %total-order;
   margin-bottom: 20px;
 }
-.home-elem__total-order-title{
 
-}
 .home-elem__total-order-price{
   @extend %total-order-price;
 }

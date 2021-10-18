@@ -11,12 +11,35 @@
 
     <div class="cart-table">
         <div class="cart-table__elements">
-
+        <!--<div class="cart-elem__order">
+            <div class="cart-elem__img">
+                <img class="img" src="/media/img/margarita.png">
+            </div>
+            &lt;!&ndash;            TODO: в чем разница между cart__item и cart-elem&ndash;&gt;
+            <div class="cart-elem__description">
+                <div class="cart-elem__order-name">Margarita</div>
+                <div class="cart-elem__order-size">small</div>
+            </div>
+            &lt;!&ndash;           TODO: тут можно было написать cart__amount-order, так как amount-order непосредственно принадлежит к корзине cart, либо если смысл в том, что это
+            независимый компонент, то должно быть два названия класса. Первый класс указывается как часть корзины cart, второй класс именно самого компонента. Например
+            class="cart__amount-counter amount-counter"&ndash;&gt;
+            <div class="cart-elem__amount amount-choice">
+                <button class="button button-menu amount-choice__button" type="button" onclick="this.nextElementSibling.stepDown()">–</button>
+                <input class="amount-choice__input" type="number" min="0" max="20" value="1" readonly class="number">
+                <button class="button button-menu amount-choice__button" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+            </div>
+            <div class="cart-elem__price">
+                100
+            </div>
+            <div class="item-clear">
+                <button class="button button_oval">bin</button>
+            </div>
+        </div>-->
         </div>
         <div class="cart__total-order">
             <div class="cart__total-order-title">Total</div>
             <div class="cart__total-order-price">
-                <span class="price">200</span>
+                <span class="price"></span>
                 <span class="currency">$</span>
             </div>
         </div>
@@ -24,7 +47,7 @@
             <button id="cart-order" class="button">Order</button>
         </div>
     </div>
-
+<div class="cart__order-info hidden">
     <div class="form">
             <form class="form-container form-cart" method="POST">
                 {% csrf_token %}
@@ -38,7 +61,7 @@
                 <button class="button button-save" type="submit">save </button>
             </form>
     </div>
-
+</div>
 </div>
 
 

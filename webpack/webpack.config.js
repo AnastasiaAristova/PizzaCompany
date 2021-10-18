@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack')
 //const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const miniCss = require('mini-css-extract-plugin');
 const { WebpackOpenBrowser } = require('webpack-open-browser');
@@ -14,6 +15,7 @@ module.exports = {
         filename: 'bundle.js',
         //clean: true,
     },
+    resolve: { alias: { jquery: "../../jquery-2.2.4.min.js" } },
     module: {
         rules: [
             {
@@ -50,6 +52,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: '../pizzaApp/templates/base.html'
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
         }),
 
     ]

@@ -33,6 +33,10 @@
   @extend %border;
 
 }
+.text-wrapper{
+  @extend %border;
+  @extend %container;
+}
 .cart-elem__description{
   @extend %elem__description;
   display: flex;
@@ -147,8 +151,11 @@
 
 .cart-elem__img{
   height: 100%;
-
+  max-width: 120px;
+  margin-left: 20px;
   img{
+    width: 100%;
+    object-fit: cover;
     border-radius: 10px;
   }
 }

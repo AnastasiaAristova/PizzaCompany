@@ -31,9 +31,9 @@ def cartPage(request):
 
 def homePage(request):
     if request.user.is_authenticated:
-        user = User.objects.get(pk=request.user.pk)
+        """ user = User.objects.get(pk=request.user.pk)
         orders = PizzaUsers.objects.filter(user=user)
-        total = orders[0].total
+        total = orders[0].total """
         return render(request, "pizza_company/home.html")
     else:
         return redirect('enter')
@@ -93,4 +93,3 @@ class LoginUser(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('main')
-    

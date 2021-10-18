@@ -2,14 +2,26 @@ $main-yellow: #ffd342;
 //header
 //TODO: сделать вложенность классов
 .header{
-  width: auto;
-  height: 70px;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr ;
+  width: 100%;
   background: $main-yellow;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  box-shadow: 0 4px 3px -3px gray;
+}
+
+.sticky + * {
+  padding-top: 80px;
+}
+.header-container{
+padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
 
 .header__icon {
   display: grid;
@@ -18,22 +30,28 @@ $main-yellow: #ffd342;
   align-items: center;
 }
 .icon{
-  padding-left: 20px;
-  padding-right: 20px;
+
 }
 
 .header__menu{
-  width: auto;
-  display: flex;
-  justify-content: flex-end;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 50%;
+display: flex;
+  align-items: center;
 }
 
 .header__menu-items{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-column-gap: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   font-size: 22px;
+  >*{
+    margin-left: 20px;
+  }
+  a{
+    transition: 0.2s;
+  }
+  a:hover{
+    color: white;
+  }
 }
