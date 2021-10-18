@@ -191,7 +191,7 @@ ul {
 
 .header__menu-items {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-column-gap: 20px;
   align-items: center;
   font-size: 22px;

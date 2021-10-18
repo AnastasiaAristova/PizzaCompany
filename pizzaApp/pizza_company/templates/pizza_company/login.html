@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block page_content %}
+<h1 class="page-title">Log in</h1>
+
+
+    <div class="form">
+            <form class="form-container" method="POST" action="{% url 'enter' %}">
+                {% csrf_token %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                {% for f in form %}
+                    <div class="form-elem">
+                        <label for="{{ f.id_for_label }}">{{f.label}}: </label>
+                        {{ f }}
+                    </div>
+                {% endfor %}
+                <button class="button" type="submit"> log in </button>
+            </form>
+    </div>
+
+
+{% endblock %}

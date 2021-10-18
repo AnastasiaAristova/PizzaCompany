@@ -16,7 +16,14 @@
                 <a href="{% url 'menu' %}">MENU</a>
                 <a href="{% url 'home' %}">HOME</a>
                 <a href="{% url 'cart' %}">CART</a>
-                <a href="{% url 'registration' %}">LOGIN</a>
+                {% if request.user.is_authenticated %}
+                <div>Hi, {{request.user.first_name}}</div>
+				<a href="{% url 'exit' %}">LOG OUT</a>
+				{% else %}
+                <a href="{% url 'registration' %}">SIGN UP</a>
+				<a href="{% url 'enter' %}">LOG IN</a>
+				{% endif %}
+
             </div>
         </div>
 </div>

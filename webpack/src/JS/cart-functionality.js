@@ -4,8 +4,8 @@ window.addEventListener('load', addItems);
 const clear = document.getElementsByClassName('item-clear');
 const total = document.getElementsByClassName('cart__total-order-price')[0];
 const amountButtons = document.getElementsByClassName('amount-choice__button');
-//const orderBtn =document.getElementById('cart-order');
-//orderBtn.addEventListener('click',showOrderForm);
+const orderBtn =document.getElementById('cart-order');
+orderBtn.addEventListener('click',showOrderForm);
 for(let el of amountButtons){
     el.addEventListener('click', countTotalSum);
     //el.addEventListener('click',countElementSum)
@@ -24,7 +24,7 @@ function addItems(){
     let keys = Object.keys(sessionStorage);
     for(let itemId of keys)
     {
-        console.log(itemId);
+        //console.log(itemId);
         let objPizza = JSON.parse(sessionStorage.getItem(itemId));
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart-elem__order');

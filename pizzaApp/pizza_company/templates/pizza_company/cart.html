@@ -24,15 +24,21 @@
             <button id="cart-order" class="button">Order</button>
         </div>
     </div>
-    <div class="cart__order-info hidden">
-        <h2 class="section-title">Enter your details</h2>
-        <div class="order-info__form">
-            <div class="order-info__container">
-                <input class="delivery-info__address" type="text">
-            </div>
-        </div>
 
+    <div class="form">
+            <form class="form-container form-cart" method="POST">
+                {% csrf_token %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                {% for f in form %}
+                    <div class="form-elem">
+                        <label for="{{ f.id_for_label }}">{{f.label}}: </label>
+                        {{ f }}
+                    </div>
+                {% endfor %}
+                <button class="button button-save" type="submit">save </button>
+            </form>
     </div>
+
 </div>
 
 

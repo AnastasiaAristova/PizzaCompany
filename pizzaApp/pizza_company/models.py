@@ -1,4 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+from django.contrib.auth.models import User
+#User = get_user_model()
 
 
 class Pizza(models.Model):
@@ -13,25 +16,13 @@ class Pizza(models.Model):
         verbose_name_plural = 'Pizzas'
 
 
-class User(models.Model):
-    name = models.CharField(max_length=50, verbose_name='Name')
-    last_name = models.CharField(max_length=50, verbose_name='Last name')
-    phone_number = models.CharField(max_length=11, verbose_name='Phone number')
-    password = models.CharField(max_length=50, verbose_name='Password')
-
-    class Meta:
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
-
-
 class PizzaUsers(models.Model):
-    user = models.ForeignKey('User', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     street = models.CharField(max_length=50)
     house = models.CharField(max_length=5)
     apartment = models.PositiveSmallIntegerField()
-    total = models.PositiveIntegerField()
-    date = models.DateField()
-    done = models.BooleanField(default=False)
+    total = models.PositiveIntegerField(default=0)
+    date = models.DateField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'Order'
@@ -39,8 +30,8 @@ class PizzaUsers(models.Model):
 
 
 class OrderInformation(models.Model):
-    order = models.ForeignKey('PizzaUsers', on_delete=models.CASCADE, null=True)
-    pizza = models.ForeignKey('Pizza', on_delete=models.CASCADE, null=True)
+    order = models.ForeignKey(PizzaUsers, on_delete=models.CASCADE, null=True)
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE, null=True)
     quantity = models.PositiveSmallIntegerField()
 
     class Meta:
