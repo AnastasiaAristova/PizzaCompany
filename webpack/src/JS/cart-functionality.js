@@ -7,12 +7,27 @@ const amountButtons = document.getElementsByClassName('amount-choice__button');
 const orderBtn =document.getElementById('cart-order');
 orderBtn.addEventListener('click',showOrderForm);
 for(let el of amountButtons){
-    el.addEventListener('click', countTotalSum);
-    //el.addEventListener('click',countElementSum)
+    el.addEventListener('click',countElementSum)
 }
 /**/
 for(let el of clear){
     el.addEventListener('click', deleteItem)
+}
+
+function clearCartIfEmpty(){
+    const table = document.getElementsByClassName('cart-table__elements')[0];
+    let keys = Object.keys(sessionStorage);
+    if(keys.length===0)
+    {
+        const emptyCart = document.createElement('div');
+        emptyCart.classList.add('text-wrapper');
+        emptyCart.classList.add('sub-title');
+        emptyCart.innerHTML="Your cart is empty";
+        table.appendChild(emptyCart);
+        document.getElementsByClassName('cart__total-order')[0].classList.add('hidden');
+        document.getElementsByClassName('cart__order-button')[0].classList.add('hidden');
+        document.getElementById('cart-order').classList.add('hidden');
+    }
 }
 
 function addItems(){
@@ -22,6 +37,7 @@ function addItems(){
    /* let text = sessionStorage.getItem('idToCart');
     let idArray = JSON.parse(text);*/
     let keys = Object.keys(sessionStorage);
+    clearCartIfEmpty();
     for(let itemId of keys)
     {
         //console.log(itemId);
@@ -67,15 +83,20 @@ function addItems(){
         amountInput.min='0';
         amountInput.max='20';
         amountInput.value=objPizza.amount;
+        amountInput.readOnly=true;
         amountInput.classList.add('amount-choice__input');
         amountInput.classList.add('number');
+        amountBtnP.addEventListener('click', countTotalSum);
+        amountBtnP.addEventListener('click',countElementSum)
+        amountBtnN.addEventListener('click', countTotalSum);
+        amountBtnN.addEventListener('click',countElementSum)
         amount.appendChild(amountBtnN);
         amount.appendChild(amountInput);
         amount.appendChild(amountBtnP);
         cartItem.appendChild(amount);
         const cartPrice = document.createElement('div');
         cartPrice.classList.add('cart-elem__price');
-        cartPrice.innerHTML=objPizza.price;
+        cartPrice.innerHTML=objPizza.price*objPizza.amount;
         cartItem.appendChild(cartPrice);
         const bin = document.createElement('div');
         bin.classList.add('item-clear');
@@ -84,28 +105,58 @@ function addItems(){
         binBtn.classList.add('button_oval');
         binBtn.innerHTML='bin';
         bin.appendChild(binBtn);
+        bin.addEventListener('click', deleteItem);
         cartItem.appendChild(bin);
         table.appendChild(cartItem);
     }
+    countTotalSum();
 }
 
 function deleteItem(e){
     const el = e.target;
     const cartItem = el.closest('.cart-elem__order');
+    sessionStorage.removeItem(cartItem.id);
     cartItem.style.display='none';
+    clearCartIfEmpty();
+    countTotalSum();
 }
-function countTotalSum(e){
-    const arr= document.getElementsByClassName('cart-elem__price');
+function countTotalSum(){
+    let keys = Object.keys(sessionStorage);
     let sum=0;
-    for(let el of arr){
-        sum+=Number(el.innerHTML);
+    for(let itemId of keys) {
+        let objPizza = JSON.parse(sessionStorage.getItem(itemId));
+        sum+=objPizza.price * objPizza.amount;
+
     }
     total.children[0].innerHTML = sum;
 }
 
 function countElementSum(e){
-    const amount = e.target.closest('.cart-elem__amount');
+    const tr = e.target;
+    const amount = tr.closest('.cart-elem__amount');
+    if(amount.children[1].value==0)
+    {
+        deleteItem(e);
+    }
+    else{
+        const itemId = tr.closest('.cart-elem__order').id;
+        const item = JSON.parse(sessionStorage.getItem(itemId));
+        item.amount = amount.children[1].value;
+        sessionStorage.setItem(itemId,JSON.stringify(item));
+        amount.nextElementSibling.innerHTML= amount.children[1].value * item.price;
+        countTotalSum();
+    }
 }
+
+// function initCountItems(){
+//     const cartItems = document.getElementsByClassName('cart-elem__order');
+//     for(let el in cartItems){
+//         console.log(el);
+//         el.querySelector('.cart-elem__price').innerHTML=
+//             JSON.parse(sessionStorage.getItem(el.id)).amount * JSON.parse(sessionStorage.getItem(el.id)).price;
+//         console.log(el.querySelector('.cart-elem__price').innerHTML);
+//     }
+// }
 
 function showOrderForm(){
     document.getElementsByClassName('cart__order-info')[0].classList.toggle('hidden');

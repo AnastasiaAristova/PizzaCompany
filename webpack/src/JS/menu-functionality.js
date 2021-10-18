@@ -20,7 +20,11 @@ for(let el of menuAmountOrder)
 
 const amount = e.target.closest('.menu-elem__multiple-choice');
         if(amount.children[1].value === '0')
+        {
+            const elemId = amount.closest('.menu-table__elem').id;
+            sessionStorage.removeItem(elemId);
             cancelChoice(amount);
+        }
     });
 }
 
@@ -54,13 +58,8 @@ function sendToCart(e){
         menuItem.querySelector('.menu-elem__name').querySelector('.sub-title').innerHTML,
         menuItem.querySelector('.menu-elem__price').innerHTML,menuItem.querySelector('input').value);
     //pizzaIdArray.push(menuItem.id);
-    console.log(JSON.stringify(orderedPizza));
+    //console.log(JSON.stringify(orderedPizza));
     sessionStorage.setItem(menuItem.id,JSON.stringify(orderedPizza));
-
-    /*localStorage.setItem('imgSrc', menuItem.querySelector('.menu-elem__img').src);
-    localStorage.setItem('itemName',menuItem.querySelector('.menu-elem__name').querySelector('.sub-title').innerHTML);
-    localStorage.setItem('itemPrice',menuItem.querySelector('.menu-elem__price').innerHTML);*/
-
 }
 
 function showAmountChoice(event){

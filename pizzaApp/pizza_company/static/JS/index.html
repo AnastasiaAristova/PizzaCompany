@@ -7,13 +7,15 @@
     <title>BestPizza</title>
 <script defer src="bundle.js"></script><link href="../css/style.css" rel="stylesheet"></head>
 <body>
-<div class="header">
+<div class="content">
+<div id="header" class="header sticky">
+    <div class="header-container">
         <div class="header__icon">
             <img class="icon" src="/media/main_page_img/Vecto.png">
         </div>
         <div class="header__menu">
             <div class="header__menu-items">
-                <a href="{% url 'menu' %}">MENU</a>
+               <a href="{% url 'menu' %}">MENU</a>
                 <a href="{% url 'home' %}">HOME</a>
                 <a href="{% url 'cart' %}">CART</a>
                 {% if request.user.is_authenticated %}
@@ -23,18 +25,22 @@
                 <a href="{% url 'registration' %}">SIGN UP</a>
 				<a href="{% url 'enter' %}">LOG IN</a>
 				{% endif %}
-
             </div>
         </div>
+    </div>
 </div>
 {% block back %}
 <div class="main-part__top">
     <button class="button button_oval"> <a href="{% url 'main' %}">back</a> </button>
 </div>
 {% endblock %}
+
 {% block page_content %} CONTENT {% endblock %}
+
+
 <div class="footer">
-    <div class="footer__logo">
+    <div class="footer-container">
+        <div class="footer__logo">
         <img src="/media/main_page_img/foot-logo.png">
     </div>
     <div class="footer__link">
@@ -46,8 +52,10 @@
             <img src="/media/main_page_img/WhatsApp.png">
         </div>
     </div>
+    </div>
 </div>
-<div class="page-bottom"></div>
+
+</div>
 <script src="{% static 'JS/jquery-2.2.4.min.js' %}"></script>
 <link rel="script" href="{% static 'JS/bundle.js' %}"/>
 <script src="{% static 'JS/bundle.js' %}"></script>
