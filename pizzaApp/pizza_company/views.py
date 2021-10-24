@@ -31,10 +31,28 @@ def cartPage(request):
 
 def homePage(request):
     if request.user.is_authenticated:
-        """ user = User.objects.get(pk=request.user.pk)
+        user = User.objects.get(pk=request.user.pk)
         orders = PizzaUsers.objects.filter(user=user)
-        total = orders[0].total """
-        return render(request, "pizza_company/home.html")
+        if len(orders) == 0:
+            return render(request, "pizza_company/home.html")
+        else:
+            list_orders = []
+            for ord in orders:
+                order = {}
+                order["order"] = ord
+                order_inf = OrderInformation.objects.filter(order=ord.pk)
+                list_pizzas = []
+                for inf in order_inf:
+                    pizza = {}
+                    pizza["name"] = inf.pizza.name
+                    pizza["image"] = inf.pizza.image
+                    pizza["quantity"] = inf.quantity
+                    pizza["price"] = int(inf.pizza.price) * int(inf.quantity)
+                    list_pizzas.append(pizza)
+                order["pizzas"] = list_pizzas
+                list_orders.append(order)
+            print(list_orders)
+            return render(request, "pizza_company/home.html", {"orders": list_orders})
     else:
         return redirect('enter')
 

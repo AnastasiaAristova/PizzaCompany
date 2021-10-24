@@ -5,61 +5,52 @@
         My orders
     </div>
     <div class="home-table">
+        {% if orders %}
+        {% for order in orders %}
         <div class="home-table__elem">
-<!--TODO: откуда взялся класс home-elem__date? По вложенности выше не было класса home-elem. -->
             <div class="elem-container">
-            <div class="home-elem__date">
-                15.09.2021 19:42
-            </div>
+                <div class="home-elem-date">
+                    {{order.order.date}}
+                </div>
 
-            <div class="home-elem__address">
-                г. Санкт-Петербург, ул. Маршала Новикова, 2к1
-            </div>
+                <div class="home-elem__address">
+                    {{order.order.street}} {{order.order.house}} {{order.order.apartment}}
+                </div>
                 <hr>
                 <ul class="home-elements">
+                    {% for pizza in order.pizzas %}
                     <li class="home-elem__order">
-                <div class="home-elem__img">
-                    <img class="img" src="/media/img/margarita.png" alt="пицца">
-                </div>
+                        <div class="home-elem__img">
+                            <img class="img" src="{{pizza.image.url}}" alt="пицца">
+                        </div>
 
-                <div class="home-elem__order-name">
-                    Margarita
-                </div>
-                <div class="amount-order">
-                    <span class="amount-order__elem"> 1 шт</span>
-                </div>
-                <div class="cart-elem__price">
-                    100
-                </div>
-            </li>
-                    <li class="home-elem__order">
-                    <div class="home-elem__img">
-                        <img class="img menu-elem__img" src="/media/img/margarita.png" alt="пицца">
-                    </div>
-
-                    <div class="home-elem__order-name">
-                        Margarita
-                    </div>
-                    <div class="amount-order">
-                        <span class="amount-order__elem"> 1 шт</span>
-                    </div>
-                    <div class="cart-elem__price">
-                        100
-                    </div>
-                </li>
+                        <div class="home-elem__order-name">
+                            {{pizza.name}}
+                        </div>
+                        <div class="amount-order">
+                            <span class="amount-order__elem"> {{pizza.quantity}} шт</span>
+                        </div>
+                        <div class="cart-elem__price">
+                            {{pizza.price}}
+                        </div>
+                    </li>
+                    {% endfor %}
                 </ul>
                 <hr>
-            <div class="home-elem__total-order">
-                <div class="home-elem__total-order-title">Total</div>
-                <div class="home-elem__total-order-price">100 <span class="currency">$</span></div>
-            </div>
+                <div class="home-elem__total-order">
+                    <div class="home-elem__total-order-title">Total</div>
+                    <div class="home-elem__total-order-price">{{order.order.total}} <span class="currency">$</span></div>
+                </div>
 
-            <div class="home-elem__bottom">
-                <button class="button button_oval"> order again </button>
-            </div>
+                <div class="home-elem__bottom">
+                    <button class="button button_oval"> order again</button>
+                </div>
 
+            </div>
         </div>
-        </div>
+        {% endfor %}
+        {% else %}
+        {% endif %}
     </div>
 
 </div>
