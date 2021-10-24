@@ -1,8 +1,9 @@
 const {pizzaIdArray, Pizza} = require("./helpObjects");
 const menuOrderBtn = document.getElementsByClassName('menu-order-btn');
+const menuItems = document.getElementsByClassName('menu-table__elem');
 window.addEventListener('load', showOrderedItems);
-
-//window.addEventListener('beforeunload',storePizzaIds);
+const array=[];
+window.addEventListener('beforeunload',sendToCart);
 
 function storePizzaIds(){
     //sessionStorage.setItem('idToCart',JSON.stringify(pizzaIdArray));
@@ -10,15 +11,14 @@ function storePizzaIds(){
 for(let el of menuOrderBtn)
 {
     el.addEventListener('click',showAmountChoice);
-    el.addEventListener('click',sendToCart);
+    //el.addEventListener('click',sendToCart);
 }
 const menuAmountOrder=document.getElementsByClassName('menu-elem__multiple-choice');
 for(let el of menuAmountOrder)
 {
-    el.addEventListener('click',sendToCart);
     el.addEventListener('click',function(e) {
 
-const amount = e.target.closest('.menu-elem__multiple-choice');
+        const amount = e.target.closest('.menu-elem__multiple-choice');
         if(amount.children[1].value === '0')
         {
             const elemId = amount.closest('.menu-table__elem').id;
@@ -27,11 +27,16 @@ const amount = e.target.closest('.menu-elem__multiple-choice');
         }
     });
 }
+function setPizzaArray(){
+    for(let elem of menuItems)
+    {
+        array[elem.id]=elem.querySelector('.menu-elem__price').textContent.replace(/\s/g,'').slice(0,-1);
+    }
 
+}
 function showOrderedItems(){
     let keys = Object.keys(sessionStorage);
     for(let itemId of keys) {
-        console.log(itemId);
         let objPizza = JSON.parse(sessionStorage.getItem(itemId));
         let menuItems = document.getElementsByClassName('menu-table__elem');
         for(let elem of menuItems)
@@ -49,20 +54,28 @@ function showOrderedItems(){
             }
         }
     }
+    setPizzaArray();
 }
 
 function sendToCart(e){
-    const target = e.target;
-    const menuItem = target.closest('.menu-table__elem');
-    let orderedPizza = new Pizza(menuItem.id,menuItem.querySelector('.menu-elem__img').src,
-        menuItem.querySelector('.menu-elem__name').querySelector('.sub-title').innerHTML,
-        menuItem.querySelector('.menu-elem__price').innerHTML,menuItem.querySelector('input').value);
-    //pizzaIdArray.push(menuItem.id);
-    //console.log(JSON.stringify(orderedPizza));
-    sessionStorage.setItem(menuItem.id,JSON.stringify(orderedPizza));
+    for(let el of menuOrderBtn){
+        if(el.classList.contains('elem-z1'))
+        {
+            const menuItem = el.closest('.menu-table__elem');
+            let orderedPizza = new Pizza(menuItem.id,menuItem.querySelector('.menu-elem__img').src,
+                menuItem.querySelector('.menu-elem__name').querySelector('.sub-title').innerHTML,
+                array[menuItem.id],menuItem.querySelector('input').value);
+            //pizzaIdArray.push(menuItem.id);
+            //console.log(JSON.stringify(orderedPizza));
+            sessionStorage.setItem(menuItem.id,JSON.stringify(orderedPizza));
+        }
+    }
+
 }
 
 function showAmountChoice(event){
+    //if(!array.contains(event.target.closest('.menu-table__elem').id))
+
     const curBtn = event.target;
     console.log(curBtn)
     const hidBtn = curBtn.nextElementSibling;

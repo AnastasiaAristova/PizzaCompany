@@ -1,11 +1,14 @@
 const {pizzaIdArray, Pizza} = require("./helpObjects");
 window.addEventListener('load', addItems);
+//window.addEventListener('beforeunload',setCart);
+let isCart=false;
 
 const clear = document.getElementsByClassName('item-clear');
 const total = document.getElementsByClassName('cart__total-order-price')[0];
 const amountButtons = document.getElementsByClassName('amount-choice__button');
 const orderBtn =document.getElementById('cart-order');
-orderBtn.addEventListener('click',showOrderForm);
+if(orderBtn)
+    orderBtn.addEventListener('click',showOrderForm);
 for(let el of amountButtons){
     el.addEventListener('click',countElementSum)
 }
@@ -14,33 +17,41 @@ for(let el of clear){
     el.addEventListener('click', deleteItem)
 }
 
+function setCart(e){
+            const menuItem = document.getElementsByClassName('cart-elem__order');
+            for(let el of menuItem) {
+                let orderedPizza = new Pizza(el.id,
+                    el.querySelector('.cart-elem__img').querySelector('.img').src,
+                    el.querySelector('.cart-elem__order-name').innerHTML,
+                    el.querySelector('.cart-elem__price').innerHTML, el.querySelector('input').value);
+                sessionStorage.setItem(el.id, JSON.stringify(orderedPizza));
+            }
+}
+
 function clearCartIfEmpty(){
-    const table = document.getElementsByClassName('cart-table__elements')[0];
+    const table = document.querySelector('.cart-table__elements');
     let keys = Object.keys(sessionStorage);
-    if(keys.length===0)
+    if(keys.length==0)
     {
         const emptyCart = document.createElement('div');
         emptyCart.classList.add('text-wrapper');
         emptyCart.classList.add('sub-title');
         emptyCart.innerHTML="Your cart is empty";
-        table.appendChild(emptyCart);
-        document.getElementsByClassName('cart__total-order')[0].classList.add('hidden');
-        document.getElementsByClassName('cart__order-button')[0].classList.add('hidden');
-        document.getElementById('cart-order').classList.add('hidden');
+        try{table.append(emptyCart);
+            document.getElementsByClassName('cart__total-order')[0].classList.add('hidden');
+            document.getElementsByClassName('cart__order-button')[0].classList.add('hidden');
+            document.getElementById('cart-order').classList.add('hidden');}
+        catch{console.log('caught error')}
+
     }
 }
 
 function addItems(){
-    //sessionStorage.clear();
-
     const table = document.getElementsByClassName('cart-table__elements')[0];
-   /* let text = sessionStorage.getItem('idToCart');
-    let idArray = JSON.parse(text);*/
     let keys = Object.keys(sessionStorage);
     clearCartIfEmpty();
     for(let itemId of keys)
     {
-        //console.log(itemId);
         let objPizza = JSON.parse(sessionStorage.getItem(itemId));
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart-elem__order');
@@ -96,7 +107,8 @@ function addItems(){
         cartItem.appendChild(amount);
         const cartPrice = document.createElement('div');
         cartPrice.classList.add('cart-elem__price');
-        cartPrice.innerHTML=objPizza.price*objPizza.amount;
+        cartPrice.classList.add('money');
+        cartPrice.innerHTML=objPizza.price*objPizza.amount +'$';
         cartItem.appendChild(cartPrice);
         const bin = document.createElement('div');
         bin.classList.add('item-clear');
@@ -118,17 +130,20 @@ function deleteItem(e){
     sessionStorage.removeItem(cartItem.id);
     cartItem.style.display='none';
     clearCartIfEmpty();
-    countTotalSum();
+    changeTotalSum();
 }
 function countTotalSum(){
-    let keys = Object.keys(sessionStorage);
-    let sum=0;
-    for(let itemId of keys) {
-        let objPizza = JSON.parse(sessionStorage.getItem(itemId));
-        sum+=objPizza.price * objPizza.amount;
-
-    }
-    total.children[0].innerHTML = sum;
+        let keys = Object.keys(sessionStorage);
+        let sum = 0;
+        for (let itemId of keys) {
+            let objPizza = JSON.parse(sessionStorage.getItem(itemId));
+            sum += objPizza.price * objPizza.amount;
+        }
+        try {
+            total.children[0].innerHTML = sum+'$';
+        } catch {
+            console.log('another');
+        }
 }
 
 function countElementSum(e){
@@ -143,20 +158,37 @@ function countElementSum(e){
         const item = JSON.parse(sessionStorage.getItem(itemId));
         item.amount = amount.children[1].value;
         sessionStorage.setItem(itemId,JSON.stringify(item));
-        amount.nextElementSibling.innerHTML= amount.children[1].value * item.price;
-        countTotalSum();
+        if(localStorage.getItem('currency')!=='usd')
+        {
+            amount.nextElementSibling.innerHTML= amount.children[1].value * Math.round(item.price*localStorage.getItem('curNum'))+'€';
+        }
+        else amount.nextElementSibling.innerHTML= amount.children[1].value * item.price+'$';
+        changeTotalSum();
     }
+
 }
 
-// function initCountItems(){
-//     const cartItems = document.getElementsByClassName('cart-elem__order');
-//     for(let el in cartItems){
-//         console.log(el);
-//         el.querySelector('.cart-elem__price').innerHTML=
-//             JSON.parse(sessionStorage.getItem(el.id)).amount * JSON.parse(sessionStorage.getItem(el.id)).price;
-//         console.log(el.querySelector('.cart-elem__price').innerHTML);
-//     }
-// }
+function changeTotalSum(){
+    const cartPrice = document.getElementsByClassName('cart-elem__price');
+    const cartElem = document.getElementsByClassName('cart-elem__order');
+    let sum = 0;
+    let keys = Object.keys(sessionStorage);
+    for (let key of keys) {
+        for(let el of cartElem)
+        {
+            if(key==el.id)
+            {
+                sum += Number(el.querySelector('.cart-elem__price').textContent.replace(/\s/g,'').slice(0,-1));
+                break;
+            }
+        }
+
+
+    }
+    if(localStorage.getItem('currency')!=='usd')
+        total.children[0].innerHTML = sum+'€';
+    else total.children[0].innerHTML = sum+'$';
+}
 
 function showOrderForm(){
     document.getElementsByClassName('cart__order-info')[0].classList.toggle('hidden');
