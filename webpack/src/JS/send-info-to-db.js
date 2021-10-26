@@ -47,8 +47,16 @@ function saveOrder(e) {
             csrfmiddlewaretoken: token,
         },
         dataType: 'json',
-        success:function(){
+        success:function(response){
             console.log('success');
+            if (response.response == 1)
+            {
+                window.location.assign('../enter/');
+                console.log(response);
+            }
+            else{
+
+            }
         },
         error : function(xhr,errmsg,err) {
             $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
@@ -58,30 +66,3 @@ function saveOrder(e) {
     });
 
 }
-// $('.button-save').click( saveOrder );
-// function saveOrder(e) {
-//     var token = getCookie('csrftoken');
-//
-//     const data = getDictionary();
-//     $.ajax({
-//         type:'POST',
-//         url:'saveorder/',
-//         data:{
-//             data: data,
-//             street: 'street',
-//             house: 'house',
-//             apartment: 5,
-//             csrfmiddlewaretoken: token,
-//         },
-//         dataType: 'json',
-//         success:function(){
-//             console.log('success');
-//         },
-//         error : function(xhr,errmsg,err) {
-//             $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-//                 " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-//             console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-//         }
-//     });
-//
-// }

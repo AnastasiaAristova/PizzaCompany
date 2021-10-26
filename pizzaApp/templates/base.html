@@ -19,11 +19,13 @@
                 <a href="{% url 'home' %}">HOME</a>
                 <a href="{% url 'cart' %}">CART</a>
                 {% if request.user.is_authenticated %}
-                <div>Hi, {{request.user.first_name}}</div>
-				<a href="{% url 'exit' %}">LOG OUT</a>
+                <div>Hi, {{request.user.first_name}} / <a href="{% url 'exit' %}">LOG OUT</a></div>
 				{% else %}
-                <a href="{% url 'registration' %}">SIGN UP</a>
-				<a href="{% url 'enter' %}">LOG IN</a>
+                <div>
+                    <a href="{% url 'enter' %}">LOG IN</a>
+                    /
+				    <a href="{% url 'registration' %}">SIGN UP</a>
+                </div>
 				{% endif %}
                 <div class="header-currency" tabindex="1">
                     <span>CUR</span>

@@ -51,9 +51,10 @@
     <div class="form">
             <form class="form-container form-cart" method="POST">
                 {% csrf_token %}
-                <div class="form-error">{{ form.non_field_errors }}</div>
+                <div class="form-error"></div>
                 {% for f in form %}
                     <div class="form-elem">
+                        {{ f.errors }}
                         <label for="{{ f.id_for_label }}">{{f.label}}: </label>
                         {{ f }}
                     </div>

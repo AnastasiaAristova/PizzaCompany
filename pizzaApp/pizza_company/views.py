@@ -58,8 +58,8 @@ def homePage(request):
 
 
 def saveOrder(request):
+    response_data = {}
     if request.user.is_authenticated:
-        response_data = {}
         data = request.POST
         order = PizzaUsers()
         order.user = User.objects.get(pk=request.user.pk)
@@ -81,18 +81,14 @@ def saveOrder(request):
         order.save()
         return JsonResponse(response_data)
     else:
-        return redirect('enter')
+        response_data['response'] = 1
+        return JsonResponse(response_data)
 
 
 class RegisterUser(CreateView):
     form_class = AddUserForm
     template_name = 'pizza_company/signup.html'
     success_url = reverse_lazy('main')
-
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     c_def = self.get_user_context(title="Регистрация")
-    #     return dict(list(context.items()) + list(c_def.items()))
 
     def form_valid(self, form):
         user = form.save()
