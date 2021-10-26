@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.form-elem, .home-elem__check, .home-elem__order-name, .home-elem__order-price, .home-elem__address, .home-elem-date, .menu-elem__price, .menu-elem__name, .cart-elem__price, .cart-elem__order-size, .cart-elem__order-name, .amount-order, .button, .home-elem__total-order, .cart__total-order, .page-title, .home-page-title, .menu-page-title, .cart-page-title {
+.form-elem, .home-elem__check, .home-elem__order-name, .home-elem__order-price, .home-elem__address, .home-elem__date, .menu-elem__price, .menu-elem__name, .cart-elem__price, .cart-elem__order-size, .cart-elem__order-name, .amount-order, .button, .home-elem__total-order, .cart__total-order, .page-title, .home-page-title, .menu-page-title, .cart-page-title {
   font-family: Constantia;
   font-size: 25px;
 }
@@ -204,6 +204,47 @@ ul {
   align-items: center;
 }
 
+.currency-content {
+  position: absolute;
+  z-index: 200;
+  right: 0;
+  top: 70px;
+  visibility: hidden;
+  height: 80px;
+  width: 100px;
+  background: white;
+  border-radius: 10px;
+  border: 2px solid #ffd342;
+  font-size: 20px;
+}
+
+.header-currency:focus > div {
+  visibility: visible;
+}
+
+.header-currency {
+  font-family: Constantia;
+  font-size: 22px;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+}
+
+.currency-content:hover {
+  cursor: pointer;
+  visibility: visible;
+  color: black;
+}
+
+.currency-container {
+  color: black;
+  padding: 10px;
+}
+
+.input-currency {
+  cursor: pointer;
+}
+
 .header__menu-items {
   width: 100%;
   display: flex;
@@ -214,10 +255,10 @@ ul {
 .header__menu-items > * {
   margin-left: 20px;
 }
-.header__menu-items a {
+.header__menu-items a, .header__menu-items span {
   transition: 0.2s;
 }
-.header__menu-items a:hover {
+.header__menu-items a:hover, .header__menu-items span:hover {
   color: white;
 }
 
@@ -581,7 +622,7 @@ ul {
   margin-bottom: 20px;
 }
 
-.home-elem-date {
+.home-elem__date {
   padding: 0px 0px 5px 0px;
 }
 
