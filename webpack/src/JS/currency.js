@@ -48,7 +48,7 @@ function getState(){
     {
         currentCur=localStorage.getItem('currency');
         document.getElementById(currentCur).checked='true';
-        if(currentCur!=='usd')
+        if(currentCur!=='usd' && !localStorage.getItem('isOrderAgain'))
             getLink(currentCur);
     }
 }

@@ -6,5 +6,6 @@ import './helpObjects';
 import '../../jquery-2.2.4.min';
 import './token-help';
 import './currency';
+import './home-functionality';
 
 

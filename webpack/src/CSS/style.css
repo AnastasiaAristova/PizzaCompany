@@ -168,6 +168,11 @@ ul {
   z-index: 2;
 }
 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  display: none;
+}
+
 .header {
   width: 100%;
   background: #ffd342;
@@ -691,6 +696,7 @@ li:last-child:after {
 .form-elem {
   display: flex;
   justify-content: center;
+  gap: 10px;
   align-items: center;
   width: 80%;
   margin: 15px 0;

@@ -19,7 +19,7 @@
                 <hr>
                 <ul class="home-elements">
                     {% for pizza in order.pizzas %}
-                    <li class="home-elem__order">
+                    <li class="home-elem__order" id="{{pizza.id}}">
                         <div class="home-elem__img">
                             <img class="img" src="{{pizza.image.url}}" alt="пицца">
                         </div>
@@ -30,8 +30,8 @@
                         <div class="amount-order">
                             <span class="amount-order__elem"> {{pizza.quantity}} шт</span>
                         </div>
-                        <div class="cart-elem__price">
-                            {{pizza.price}}
+                        <div class="cart-elem__price money">
+                            {{pizza.price}}$
                         </div>
                     </li>
                     {% endfor %}
@@ -39,11 +39,11 @@
                 <hr>
                 <div class="home-elem__total-order">
                     <div class="home-elem__total-order-title">Total</div>
-                    <div class="home-elem__total-order-price">{{order.order.total}} <span class="currency">$</span></div>
+                    <div class="home-elem__total-order-price money">{{order.order.total}}$ <span class="currency"></span></div>
                 </div>
 
                 <div class="home-elem__bottom">
-                    <button class="button button_oval"> order again</button>
+                    <button class="button button_oval order-again">order again</button>
                 </div>
 
             </div>

@@ -1,8 +1,8 @@
 const {pizzaIdArray, Pizza} = require("./helpObjects");
 window.addEventListener('load', addItems);
-//window.addEventListener('beforeunload',setCart);
-let isCart=false;
 
+let isCart=false;
+const saveBtn = document.querySelector('.button-save');
 const clear = document.getElementsByClassName('item-clear');
 const total = document.getElementsByClassName('cart__total-order-price')[0];
 const amountButtons = document.getElementsByClassName('amount-choice__button');
@@ -12,9 +12,18 @@ if(orderBtn)
 for(let el of amountButtons){
     el.addEventListener('click',countElementSum)
 }
+
 /**/
 for(let el of clear){
     el.addEventListener('click', deleteItem)
+}
+
+function clearCart(){
+    sessionStorage.clear();
+    const emptyCart = document.createElement('div');
+    emptyCart.classList.add('text-wrapper');
+    emptyCart.classList.add('sub-title');
+    emptyCart.innerHTML="Your cart is empty";
 }
 
 function setCart(e){
@@ -49,6 +58,7 @@ function clearCartIfEmpty(){
 function addItems(){
     const table = document.getElementsByClassName('cart-table__elements')[0];
     let keys = Object.keys(sessionStorage);
+    console.log(localStorage.getItem('isOrderAgain'))
     clearCartIfEmpty();
     for(let itemId of keys)
     {
@@ -108,7 +118,9 @@ function addItems(){
         const cartPrice = document.createElement('div');
         cartPrice.classList.add('cart-elem__price');
         cartPrice.classList.add('money');
-        cartPrice.innerHTML=objPizza.price*objPizza.amount +'$';
+        if(localStorage.getItem('isOrderAgain'))
+            cartPrice.textContent=objPizza.price;
+        else cartPrice.textContent=objPizza.price*objPizza.amount +'$';
         cartItem.appendChild(cartPrice);
         const bin = document.createElement('div');
         bin.classList.add('item-clear');
@@ -121,7 +133,12 @@ function addItems(){
         cartItem.appendChild(bin);
         table.appendChild(cartItem);
     }
-    countTotalSum();
+   if(localStorage.getItem('isOrderAgain'))
+       total.children[0].textContent =localStorage.getItem('total');
+    else countTotalSum();
+    localStorage.removeItem('isOrderAgain');
+    localStorage.removeItem('total');
+    localStorage.removeItem('goCart');
 }
 
 function deleteItem(e){
