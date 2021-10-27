@@ -55,7 +55,21 @@ function saveOrder(e) {
                 console.log(response);
             }
             else{
-
+                const table = document.querySelector('.cart-table__elements');
+                for(let el of table.children)
+                {
+                    el.classList.add('hidden');
+                }
+                sessionStorage.clear();
+                const emptyCart = document.createElement('div');
+                emptyCart.classList.add('text-wrapper');
+                emptyCart.classList.add('sub-title');
+                emptyCart.innerHTML="Your order is succesfull";
+                table.append(emptyCart);
+                document.getElementsByClassName('cart__total-order')[0].classList.add('hidden');
+                document.getElementsByClassName('cart__order-button')[0].classList.add('hidden');
+                document.getElementById('cart-order').classList.add('hidden');
+                document.querySelector('.cart__order-info').classList.toggle('hidden');
             }
         },
         error : function(xhr,errmsg,err) {

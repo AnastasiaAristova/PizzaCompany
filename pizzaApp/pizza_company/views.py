@@ -44,6 +44,7 @@ def homePage(request):
                 list_pizzas = []
                 for inf in order_inf:
                     pizza = {}
+                    pizza["id"] = inf.pizza.pk
                     pizza["name"] = inf.pizza.name
                     pizza["image"] = inf.pizza.image
                     pizza["quantity"] = inf.quantity
