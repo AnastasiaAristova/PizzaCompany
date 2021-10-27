@@ -52,7 +52,7 @@ def homePage(request):
                     list_pizzas.append(pizza)
                 order["pizzas"] = list_pizzas
                 list_orders.append(order)
-            print(list_orders)
+            list_orders.reverse()
             return render(request, "pizza_company/home.html", {"orders": list_orders})
     else:
         return redirect('enter')

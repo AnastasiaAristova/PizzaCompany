@@ -52,7 +52,6 @@ function saveOrder(e) {
             if (response.response == 1)
             {
                 window.location.assign('../enter/');
-                console.log(response);
             }
             else{
                 const table = document.querySelector('.cart-table__elements');
