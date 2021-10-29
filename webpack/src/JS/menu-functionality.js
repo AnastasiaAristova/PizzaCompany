@@ -4,10 +4,11 @@ const menuItems = document.getElementsByClassName('menu-table__elem');
 window.addEventListener('load', showOrderedItems);
 const array=[];
 window.addEventListener('beforeunload',sendToCart);
-
+//TODO: удалить пустую функцию
 function storePizzaIds(){
     //sessionStorage.setItem('idToCart',JSON.stringify(pizzaIdArray));
 }
+//TODO: стараться все оборачивать в функции/методы классов
 for(let el of menuOrderBtn)
 {
     el.addEventListener('click',showAmountChoice);
@@ -33,6 +34,7 @@ function setPizzaArray(){
     }
 }
 function showOrderedItems(){
+    //TODO: упростить функцию, разбить содержимое на несколько функций
     let keys = Object.keys(sessionStorage);
     for(let itemId of keys) {
         let objPizza = JSON.parse(sessionStorage.getItem(itemId));
@@ -53,6 +55,7 @@ function showOrderedItems(){
         }
     }
     setPizzaArray();
+    //TODO: вынести в отдельную функцию redirect
     if(localStorage.getItem('goCart'))
         window.location.href = '/cart';
 }

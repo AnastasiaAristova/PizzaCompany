@@ -37,10 +37,12 @@ def homePage(request):
             return render(request, "pizza_company/home.html")
         else:
             list_orders = []
+            # TODO: этот цикл нужно вынести в отдельную функцию
             for ord in orders:
                 order = {}
                 order["order"] = ord
                 order_inf = OrderInformation.objects.filter(order=ord.pk)
+                # TODO: этот цикл нужно вынести в отдельную функцию
                 list_pizzas = []
                 for inf in order_inf:
                     pizza = {}
@@ -70,6 +72,7 @@ def saveOrder(request):
         order.save()
         i = 0
         total = 0
+        # TODO: этот цикл нужно вынести в отдельную функцию
         while i < (len(data)-4)/2:
             order_info = OrderInformation()
             order_info.order = order

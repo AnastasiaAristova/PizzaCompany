@@ -2,87 +2,109 @@
 
 ///cart header
 
-%section-header-text{
+%section-header-text {
   //TODO: размер шрифта нужно вынести в переменные
   color: black;
   font-size: 40px;
 }
-%section-header-display{
+
+%section-header-display {
   display: grid;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   margin: 20px;
   padding-top: 30px;
 }
 
-%section-right{
+%section-right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
+//TODO: должна быть вложенность классов, так легче читать (касается всех scss файлов). Например:
+// .cart-elem{
+//  &__order{
+//    ...
+//  }
+//  &__description{
+//    ....
+//  }
+//
+// }
 
 
-.cart-table{
+.cart-table {
   @extend %table;
 }
-.cart-page-title{
+
+.cart-page-title {
   @extend %title;
 }
-.cart-elem__order{
+
+.cart-elem__order {
   @extend %table__order;
   @extend %border;
 
 }
-.text-wrapper{
+
+.text-wrapper {
   @extend %border;
   @extend %container;
 }
-.cart-elem__description{
+
+.cart-elem__description {
   @extend %elem__description;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
-.cart-elem__order-name{
+
+.cart-elem__order-name {
   //@extend %centering;
   @extend %text;
 }
 
-.cart-elem__order-size{
+.cart-elem__order-size {
   //@extend %centering;
   @extend %text;
   ////Свойство не работает почему-то, если переместиьь в style.scss, то работает?? мб с вебпаком норм будет
   text-transform: none;
 }
-.cart-elem__price{
+
+.cart-elem__price {
   @extend %text;
 }
 
-.cart__total-order{
+.cart__total-order {
   @extend %total-order;
 }
-.cart__total-order-title{
+
+.cart__total-order-title {
 
 }
-.cart-elem__total-order-price{
+
+.cart-elem__total-order-price {
   @extend %total-order-price;
 }
-.cart-elem__total-order-currency{
+
+.cart-elem__total-order-currency {
   width: 20px;
 }
-.section-header-name{
+
+.section-header-name {
   @extend %section-header-text
 }
-.cart__header{
+
+.cart__header {
   @extend %section-header-display
 }
 
-.cart__total{
+.cart__total {
   @extend %section-header-display
 }
 
-.cart__header__component{
+.cart__header__component {
   @extend %section-right
 }
 
@@ -115,13 +137,13 @@
 
 /* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
-   //TODO: цвета в переменные
+  //TODO: цвета в переменные
   border-color: transparent transparent #fff transparent;
   top: 7px;
 }
 
 /* style the items (options), including the selected item: */
-.select-items div,.select-selected {
+.select-items div, .select-selected {
   //TODO: цвета  в переменные
   color: #ffffff;
   padding: 8px 16px;
@@ -149,11 +171,12 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.cart-elem__img{
+.cart-elem__img {
   height: 100%;
   max-width: 120px;
   margin-left: 20px;
-  img{
+
+  img {
     width: 100%;
     object-fit: cover;
     border-radius: 10px;
@@ -162,18 +185,18 @@
 
 
 ///////////////////////
-.page-cart{
+.page-cart {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr ;
+  grid-template-columns: 1fr 3fr 1fr;
 }
 
-.cart{
+.cart {
   grid-column-start: 2;
   grid-column-end: 3;
 }
 
 
-.total-sum{
+.total-sum {
   @extend %section-right;
   font-size: 30px;
 }
@@ -184,32 +207,36 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }*/
 
-.cart__item__component{
+.cart__item__component {
   @extend %centering;
   flex-direction: column;
 }
 
-.currency-sign{
+.currency-sign {
   margin-left: 10px;
-  padding:0 3px 0 3px;
+  padding: 0 3px 0 3px;
   border: 2px solid $main-yellow;
   border-radius: 25px;
   cursor: pointer;
 }
-.cart__order-button{
+
+.cart__order-button {
   margin: 20px 0;
   display: flex;
   justify-content: flex-end;
-  button{
+
+  button {
     padding: 10px 20px;
   }
 }
-.order-info__form{
+
+.order-info__form {
   @extend %table;
   @extend %border;
   width: 50%;
 }
-.order-info__container{
+
+.order-info__container {
   @extend %container;
 
 }

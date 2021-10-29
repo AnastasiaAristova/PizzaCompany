@@ -5,8 +5,11 @@ for(let el of repeatOrderBtn)
     el.addEventListener('click', repeatOrder);
 }
 
+
 function repeatOrder(e){
+    //TODO: разбить содержимое на несколько простых функций
     //localStorage.removeItem('isOrderAgain');
+    //TODO:   console.log нужно удалять
     console.log(e.target);
     sessionStorage.clear();
     localStorage.setItem('isOrderAgain','true');
