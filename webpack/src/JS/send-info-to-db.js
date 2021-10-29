@@ -61,8 +61,8 @@ function saveOrder(e) {
             console.log('success');
             if (response.response == 1) {
                 window.location.assign('../enter/');
-                console.log(response);
-            } else {
+            }
+            else{
                 const table = document.querySelector('.cart-table__elements');
                 for (let el of table.children) {
                     el.classList.add('hidden');
